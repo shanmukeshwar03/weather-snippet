@@ -1,5 +1,4 @@
 import axios from "axios";
-import moment from "moment";
 import { DateTime } from "luxon";
 
 function Home({ data }) {
@@ -7,27 +6,97 @@ function Home({ data }) {
   const hourly_weather = data.hourly.slice(1, 16);
 
   return (
-    <div className="bg-gradient-to-r from-[#4B79A1] to-[#283E51] h-screen w-screen flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center  h-3/4 w-2/5 text-white gap-4">
-        <span className="text-2xl">
+    <div
+      style={{
+        backgroundImage: "linear-gradient(to right, #4B79A1 , #283E51)",
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        boxSizing: "border-box",
+        margin: 0,
+        padding: 0,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          height: "75%",
+          width: "40%",
+          color: "#fff",
+          gap: "1rem",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "1.5rem",
+            lineHeight: "2rem",
+          }}
+        >
           {DateTime.fromSeconds(current_weather.dt)
             .setZone(data.timezone)
             .toFormat("cccc, dd LLL yyyy' | Local time: 'hh:mm a")}
         </span>
-        <span className="text-xl">Mansoorabad, IN</span>
-        <span className="text-xl">
+        <span
+          style={{
+            fontSize: "1.25rem",
+            lineHeight: "1.75rem",
+          }}
+        >
+          Mansoorabad, IN
+        </span>
+        <span
+          style={{
+            fontSize: "1.25rem",
+            lineHeight: "1.75rem",
+          }}
+        >
           {current_weather.weather[0].description}
         </span>
-        <div className="flex items-center justify-between w-full">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
           <img
             src={`http://openweathermap.org/img/wn/${current_weather.weather[0].icon}@2x.png`}
             alt="weather_icon"
           />
-          <span className="text-4xl">{current_weather.temp.toFixed(1)}°C</span>
-          <div className="flex flex-col justify-around gap-2">
-            <span className="flex gap-2">
+          <span
+            style={{
+              fontSize: "2.25rem",
+              lineHeight: "2.5rem",
+            }}
+          >
+            {current_weather.temp.toFixed(1)}°C
+          </span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+              gap: "0.5rem",
+            }}
+          >
+            <span
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+              }}
+            >
               <img
-                className="inline white-stroke"
+                style={{
+                  display: "inline",
+                  filter:
+                    "invert(100%) sepia(0%) saturate(7459%) hue-rotate(142deg) brightness(116%) contrast(109%)",
+                }}
                 height={10}
                 width={23}
                 src="/pressure.svg"
@@ -35,9 +104,18 @@ function Home({ data }) {
               <b>Pressure: </b>
               {current_weather.pressure}
             </span>
-            <span className="flex gap-2">
+            <span
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+              }}
+            >
               <img
-                className="inline white-stroke"
+                style={{
+                  display: "inline",
+                  filter:
+                    "invert(100%) sepia(0%) saturate(7459%) hue-rotate(142deg) brightness(116%) contrast(109%)",
+                }}
                 height={10}
                 width={23}
                 src="/humidity.svg"
@@ -47,10 +125,25 @@ function Home({ data }) {
             </span>
           </div>
         </div>
-        <div className="flex justify-between w-full">
-          <span className="flex gap-2">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <span
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+            }}
+          >
             <img
-              className="inline white-stroke"
+              style={{
+                display: "inline",
+                filter:
+                  "invert(100%) sepia(0%) saturate(7459%) hue-rotate(142deg) brightness(116%) contrast(109%)",
+              }}
               height={10}
               width={23}
               src="/sunrise.svg"
@@ -60,9 +153,18 @@ function Home({ data }) {
               .setZone(data.timezone)
               .toFormat("hh:mm a")}
           </span>
-          <span className="flex gap-2">
+          <span
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+            }}
+          >
             <img
-              className="inline white-stroke"
+              style={{
+                display: "inline",
+                filter:
+                  "invert(100%) sepia(0%) saturate(7459%) hue-rotate(142deg) brightness(116%) contrast(109%)",
+              }}
               height={10}
               width={23}
               src="/sunset.svg"
@@ -72,9 +174,18 @@ function Home({ data }) {
               .setZone(data.timezone)
               .toFormat("hh:mm a")}
           </span>
-          <span className="flex gap-2">
+          <span
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+            }}
+          >
             <img
-              className="inline white-stroke"
+              style={{
+                display: "inline",
+                filter:
+                  "invert(100%) sepia(0%) saturate(7459%) hue-rotate(142deg) brightness(116%) contrast(109%)",
+              }}
               height={10}
               width={23}
               src="/speed.svg"
@@ -82,9 +193,18 @@ function Home({ data }) {
             <b>speed: </b>
             {current_weather.wind_speed} km/h
           </span>
-          <span className="flex gap-2">
+          <span
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+            }}
+          >
             <img
-              className="inline white-stroke"
+              style={{
+                display: "inline",
+                filter:
+                  "invert(100%) sepia(0%) saturate(7459%) hue-rotate(142deg) brightness(116%) contrast(109%)",
+              }}
               height={10}
               width={23}
               src="/direction.svg"
@@ -93,12 +213,37 @@ function Home({ data }) {
             {current_weather.wind_deg} km/h
           </span>
         </div>
-        <div className="w-full">
+        <div
+          style={{
+            width: "100%",
+          }}
+        >
           <span>Hourly Forecast</span>
-          <hr className="w-full my-3" />
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <hr
+            style={{
+              width: "100%",
+              marginTop: "0.75rem",
+              marginBottom: "0.75rem",
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "1.5rem",
+            }}
+          >
             {hourly_weather.map((hour, key) => (
-              <div key={key} className="flex flex-col items-center">
+              <div
+                key={key}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
                 <span>
                   {DateTime.fromSeconds(hour.dt)
                     .setZone(data.timezone)
