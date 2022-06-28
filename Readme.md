@@ -1,0 +1,1 @@
+# weather snippet for nodered
