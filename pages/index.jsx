@@ -6,7 +6,7 @@ function Home({ data }) {
   const hourly_weather = data.hourly.slice(1, 16);
 
   return (
-    <div className="bg-gradient-to-r from-[#4B79A1] to-[#283E51] h-screen w-screen flex flex-col items-center justify-center">
+    <div className="bg-gradient-to-r from-[#4B79A1] to-[#283E51] h-screen w-screen flex flex-col items-center pt-8">
       <div className="flex flex-col items-center  h-3/4 w-2/5 text-white gap-4">
         <span className="text-2xl">
           {DateTime.fromSeconds(current_weather.dt)
@@ -97,7 +97,7 @@ function Home({ data }) {
           <hr className="w-full my-3" />
           <div className="flex flex-wrap items-center justify-center gap-6">
             {hourly_weather.map((hour, key) => (
-              <div key={key} className="flex flex-col items-center">
+              <div key={key} className="flex flex-col items-center my-4">
                 <span>
                   {DateTime.fromSeconds(hour.dt)
                     .setZone(data.timezone)
@@ -106,6 +106,7 @@ function Home({ data }) {
                 <img
                   src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
                   alt="weather_icon"
+                  width={90}
                 />
                 <span>{hour.temp.toFixed(1)}°C</span>
               </div>
